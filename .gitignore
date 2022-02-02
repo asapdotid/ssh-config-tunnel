@@ -1,0 +1,18 @@
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# IDE / Editor
+.idea
+.vscode
+
+# Service worker
+sw.*
+
+# macOS
+.DS_Store
+
+# Vim swap files
+*.swp

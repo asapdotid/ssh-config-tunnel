@@ -1,0 +1,35 @@
+### default for all ##
+Host *
+  ForwardAgent yes
+  ForwardX11 no
+  ForwardX11Trusted yes
+  ExitOnForwardFailure yes
+  Port 22
+  Protocol 2
+  ServerAliveInterval 240
+  ServerAliveCountMax 6
+  IdentityFile ~/.ssh/id_ed25519
+  ControlMaster auto
+  Compression yes
+
+Host github.com
+  HostName github.com
+  User asapdotid # change with your username
+  IdentityFile ~/.ssh/id_rsa
+
+Host gitlab.com
+  HostName gitlab.com
+  User asapdotid # change with your username
+  IdentityFile ~/.ssh/id_ed25519
+
+Host aws.bastion
+  HostName ec2-54-169-212-111.ap-southeast-1.compute.amazonaws.com
+  User ec2-user # change with your username
+  IdentityFile ~/.ssh/id_rsa
+
+Host aws.webserver
+  HostName 10.0.1.232
+  User ubuntu # change with your username
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+  ProxyJump aws.bastion

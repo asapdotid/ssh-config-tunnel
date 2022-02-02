@@ -1,0 +1,13 @@
+[Unit]
+Description=AutoSSH tunnel service to My SSH Tunnel Server on local port 2212
+After=network.target
+
+[Service]
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/usr/bin/autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -N -i ~/.ssh/aws-vpc-key-pair.pem ec2-user@ec2-54-169-212-111.ap-southeast-1.compute.amazonaws.com -L 2212:ip-10-0-1-232.ap-southeast-1.compute.internal:22
+Restart=on-failure
+RestartSec=10
+TimeoutSec=10
+
+[Install]
+WantedBy=default.target
